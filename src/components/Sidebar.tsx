@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { AiFillQuestionCircle } from "react-icons/ai";
 import { HiHome } from "react-icons/hi";
 import { HiMiniSparkles } from "react-icons/hi2";
@@ -6,11 +7,14 @@ import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { PiCopySimpleFill } from "react-icons/pi";
 import { RiCoupon2Fill } from "react-icons/ri";
 import { SlSettings } from "react-icons/sl";
+import Menu from "./menu";
 
 const Sidebar = () => {
+
+    const [isOpen, setOpen]= useState<boolean>(false)
     return (
         <>
-            <aside className="w-[15vw] bg-black md:w-[18vw]  min-h-screen  shadow-md p-4 relative flex flex-col">
+            <aside className="w-[15vw] bg-black md:w-[18vw]  min-h-screen  shadow-md p-4 relative  hidden lg:flex lg:flex-col">
                 <div className="flex justify-between items-center mb-8 border-b border-gray-900 pb-4 text-white">
                     <div className="flex gap-2 items-center">
                         <IoLogoSlack className="text-lg cursor-pointer" />
@@ -62,12 +66,11 @@ const Sidebar = () => {
 
                 </div>
                 <div className="flex items-center  justify-between  p-4 gap-3 mt-4 py-4 absolute bottom-0 left-0 border-t border-gray-900 text-white w-full">
-                    
                     <div className="flex gap-2">
                     <img
                             src="https://images.pexels.com/photos/1391498/pexels-photo-1391498.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                             alt="User Avatar"
-                            className="w-10 h-10 rounded-full"
+                            className="w-10 h-10 rounded-md"
                         />
                         <div className="flex justify-between items-center">
                         <div>
@@ -76,7 +79,13 @@ const Sidebar = () => {
                         </div>
                         </div>
                     </div>
-                        <IoIosArrowUp />
+
+                    <IoIosArrowUp
+                    className={`cursor-pointer transition-transform ${isOpen ? "rotate-180" : ""}`}
+                    onClick={() => setOpen(!isOpen)}
+                />
+
+                    {isOpen && <Menu/>}               
                         
                     </div>
             </aside>

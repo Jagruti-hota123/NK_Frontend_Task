@@ -1,2 +1,5 @@
 export {default as Section} from "./Section"
 export {default as Sidebar} from "./Sidebar"
+export {default as Menu} from "./menu"
+export {default as Cards} from "./Cards"
+export {default as Table} from "./Table"
